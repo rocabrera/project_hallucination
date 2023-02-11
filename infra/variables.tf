@@ -5,3 +5,6 @@ variable "region" {
 variable "account_id" {
   type    = string
 }
+variable "environment" {
+  type    = string
+}
