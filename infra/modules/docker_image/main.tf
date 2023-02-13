@@ -19,7 +19,7 @@ resource aws_ecr_repository repo {
  force_delete = true
 }
  
-data aws_ecr_image lambda_image {
+data aws_ecr_image image {
  depends_on = [
    null_resource.ecr_image
  ]

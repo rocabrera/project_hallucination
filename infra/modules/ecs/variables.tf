@@ -10,6 +10,11 @@ variable "environment" {
   type    = string
 }
 
-variable "image_id" {
+variable "repository_url" {
   type    = string
 }
+
+variable "root_app_path" {
+  type    = string
+}
+
