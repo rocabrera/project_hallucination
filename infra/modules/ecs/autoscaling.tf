@@ -1,8 +1,7 @@
 resource "aws_launch_template" "ecs_launch_template" {
     name_prefix          = "protein-design"
     instance_type        = "t3.micro"
-    # TODO: Get automatically later & maybe changing to amazon linux image
-    image_id             = "ami-0557a15b87f6559cf" 
+    image_id             = "ami-0dfcb1ef8550277af" 
     user_data            = filebase64("${var.root_app_path}/infra/modules/ecs/user_data.sh")
     network_interfaces {
         security_groups      = [aws_security_group.ecs_sg.id]
