@@ -11,14 +11,20 @@ resource "aws_ecs_service" "worker" {
 }
 
 resource "aws_ecs_task_definition" "task_definition" {
-  family               =  "gpu-worker"
+  family       =  "gpu-worker"
+  cpu          = 512
+  memory       = 512
+  # network_mode ="awsvpc"
+  execution_role_arn = aws_iam_role.task_execution_role.arn
+
   container_definitions = data.template_file.task_definition_template.rendered
+  requires_compatibilities = ["EC2"]
 }
 
 data "template_file" "task_definition_template" {
     template = file("${var.root_app_path}/infra/modules/ecs/task_definition.json")
     vars = {
-      REPOSITORY_URL = var.repository_url
+      REPOSITORY_URL = replace(var.repository_url, "https://", "")
     }
 }
 

@@ -1,9 +1,7 @@
 [
     {
       "essential": true,
-      "memory": 1024,
       "name": "gpu-worker",
-      "cpu": 1,
       "image": "${REPOSITORY_URL}:latest",
       "environment": []
     }
