@@ -1,0 +1,8 @@
+[
+    {
+      "essential": true,
+      "name": "gpu-worker",
+      "image": "${REPOSITORY_URL}:latest",
+      "environment": []
+    }
+  ]

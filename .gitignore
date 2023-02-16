@@ -129,6 +129,10 @@ dmypy.json
 .pyre/
 
 # terraform
-
 **/terraform.tfstate*
 **/.terraform*
+
+# artifacts
+
+app/artifacts/*
+!app/artifacts/.gitkeep
