@@ -31,9 +31,9 @@ data "aws_iam_policy_document" "ecs_assume_task_execution_policy" {
   }
 }
 
-data "aws_iam_policy_document" "ecs_task_execution_policy" {
+data "aws_iam_policy_document" "ecs_agent_execution_policy" {
   statement {
-    sid = "1"
+    sid = "MinimalExecution"
 
     actions = [
       "ecr:GetAuthorizationToken",
@@ -42,6 +42,31 @@ data "aws_iam_policy_document" "ecs_task_execution_policy" {
       "ecr:BatchGetImage",
       "logs:CreateLogStream",
       "logs:PutLogEvents"
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "task_execution_policy" {
+  statement {
+    sid = "ReadFromSQSQueue"
+
+    actions = [
+      "sqs:*"
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+  statement {
+    sid = "SendBucket"
+
+    actions = [
+      "s3:*"
     ]
 
     resources = [

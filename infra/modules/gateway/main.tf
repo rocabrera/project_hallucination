@@ -39,22 +39,7 @@ resource "aws_api_gateway_integration" "api" {
 
   # Request Template for passing Method, Body, QueryParameters and PathParams to SQS messages
   request_templates = {
-    "application/json" = <<EOF
-Action=SendMessage&MessageBody={
-  "method": "$context.httpMethod",
-  "body-json" : $input.json('$'),
-  "queryParams": {
-    #foreach($param in $input.params().querystring.keySet())
-    "$param": "$util.escapeJavaScript($input.params().querystring.get($param))" #if($foreach.hasNext),#end
-  #end
-  },
-  "pathParams": {
-    #foreach($param in $input.params().path.keySet())
-    "$param": "$util.escapeJavaScript($input.params().path.get($param))" #if($foreach.hasNext),#end
-    #end
-  }
-}"
-EOF
+    "application/json" = "Action=SendMessage&MessageBody=$input.body"
   }
 }
 
