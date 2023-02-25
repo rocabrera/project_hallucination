@@ -14,6 +14,7 @@ resource null_resource ecr_image {
  }
 }
 
+# using public repo 50Gb of free space
 resource aws_ecr_repository repo {
  name = var.repository_name
  force_delete = true

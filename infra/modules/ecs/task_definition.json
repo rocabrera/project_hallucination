@@ -3,10 +3,18 @@
       "essential": true,
       "name": "gpu-worker",
       "image": "${REPOSITORY_URL}:latest",
+      "cpu": 4096,
+      "memory": 8192,
       "environment": [
         {
           "name": "AWS_DEFAULT_REGION",
           "value": "${REGION}"
+        }
+      ],
+      "resourceRequirements" : [
+        {
+           "type" : "GPU", 
+           "value" : "1"
         }
       ]
     }
