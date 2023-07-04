@@ -1,8 +1,8 @@
 resource "aws_launch_template" "ecs_launch_template" {
     name_prefix          = "protein-design"
-    instance_type        = "t2.micro"
-    # image_id             = "ami-01ca50b701a74ed92" # EBS optimized
-    image_id             = "ami-0ac7415dd546fb485" # free tier
+    instance_type        = "p2.xlarge"
+    # image_id             = "ami-0ac7415dd546fb485" # ECS-optimized Amazon Linux 2
+    image_id             = "ami-08ff414257e50e3e9" # ECS GPU-optimized 
     # user_data            = base64encode("#!/bin/bash\necho ECS_CLUSTER=default >> /etc/ecs/ecs.config")
     user_data            = filebase64("${var.root_app_path}/infra/modules/ecs/user_data.sh")
     network_interfaces {

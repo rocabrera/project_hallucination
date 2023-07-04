@@ -12,8 +12,8 @@ resource "aws_ecs_service" "worker" {
 
 resource "aws_ecs_task_definition" "task_definition" {
   family       = "gpu-worker"
-  cpu          = 512
-  memory       = 512
+  cpu          = 4096
+  memory       = 8192
   # network_mode ="awsvpc"
   task_role_arn      = aws_iam_role.task_execution_role.arn
   execution_role_arn = aws_iam_role.ecs_agent_execution_role.arn
